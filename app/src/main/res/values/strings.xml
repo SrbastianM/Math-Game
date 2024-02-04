@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Math Game</string>
+    <string name="next_btn">Next</string>
+    <string name="send_btn">Prove</string>
+    <string name="exit_btn">Exit</string>
+    <string name="playAgain_btn">Play Again!</string>
+    <string name="plus_title">Plus</string>
+    <string name="subtraction_title">Subtraction </string>
+    <string name="multiplication_title">Multiplication </string>
+    <string name="timer">Time</string>
+    <string name="life_rest">life</string>
+    <string name="score">Score</string>
+    <string name="gameOver_Title">Game Over!</string>
 </resources>
