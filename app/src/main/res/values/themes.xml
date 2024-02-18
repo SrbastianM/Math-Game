@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MathGame" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@color/grey_500</item>
-         <item name="colorPrimaryVariant">@color/grey_600</item>
-         <item name="colorOnPrimary">@color/grey_200</item>
+        <item name="colorPrimary">@color/grey_500</item>
+        <item name="colorPrimaryVariant">@color/grey_600</item>
+        <item name="colorOnPrimary">@color/grey_200</item>
 
     </style>
 

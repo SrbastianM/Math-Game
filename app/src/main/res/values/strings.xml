@@ -4,11 +4,12 @@
     <string name="send_btn">Prove</string>
     <string name="exit_btn">Exit</string>
     <string name="playAgain_btn">Play Again!</string>
-    <string name="plus_title">Plus</string>
-    <string name="subtraction_title">Subtraction </string>
-    <string name="multiplication_title">Multiplication </string>
+    <string name="plus_title">Plus Quiz</string>
+    <string name="subtraction_title">Subtraction Quiz</string>
+    <string name="multiplication_title">Multiplication Quiz</string>
     <string name="timer">Time</string>
     <string name="life_rest">life</string>
     <string name="score">Score</string>
     <string name="gameOver_Title">Game Over!</string>
+    <string name="title_activity_game">GameActivity</string>
 </resources>
