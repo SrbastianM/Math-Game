@@ -4,4 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    android:background="@color/blueGrey_300"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="24dp"
+        android:background="@color/blueGrey_200"
+        android:elevation="2dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_margin="24dp"
+            android:fontFamily="@font/kode_mono_medium"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/blueGrey_800"
+            android:textSize="48sp" />
+
+        <Button
+            android:id="@+id/btnPlusQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="24dp"
+            android:fontFamily="@font/kode_mono_regular"
+            android:text="@string/plus_title"
+            android:textSize="20sp"
+            app:cornerRadius="4dp" />
+
+        <Button
+            android:id="@+id/btnSubstrationQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="24dp"
+            android:fontFamily="@font/kode_mono_regular"
+            android:text="@string/subtraction_title"
+            android:textSize="20dp"
+            app:cornerRadius="4dp" />
+
+        <Button
+            android:id="@+id/btnMultiplicationQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="24dp"
+            android:fontFamily="@font/kode_mono_regular"
+            android:text="@string/multiplication_title"
+            android:textSize="20dp"
+            app:cornerRadius="4dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
