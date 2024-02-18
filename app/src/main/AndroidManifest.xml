@@ -16,6 +16,7 @@
             android:name=".GameActivity"
             android:exported="false"
             android:label="@string/title_activity_game"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.MathGame" />
         <activity
             android:name=".MainActivity"
