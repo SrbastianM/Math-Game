@@ -2,10 +2,12 @@ package com.srbastian.mathgame
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import java.util.Locale
 import kotlin.random.Random
 
 class GameActivity : AppCompatActivity() {
@@ -22,6 +24,10 @@ class GameActivity : AppCompatActivity() {
     var correctAnswer = 0
     var userScore = 0
     var userLives = 3
+
+    lateinit var timer : CountDownTimer
+    private val starTimerInMillis : Long = 60000
+    var timeLeftInMillis : Long = starTimerInMillis
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -47,6 +53,9 @@ class GameActivity : AppCompatActivity() {
             }
             else
             {
+
+                pauseTimer()
+
                 val userAnswer = input.toInt()
                 if (userAnswer == correctAnswer)
                 {
@@ -66,15 +75,54 @@ class GameActivity : AppCompatActivity() {
         }
 
         buttonNext.setOnClickListener {
+            pauseTimer()
+            resetTimer()
             gameContinue()
             editTextAnswer.setText("")
         }
         }
         // Take 2 random numbers and set the global variable with the sum of those
-        fun gameContinue() {
+        fun gameContinue()
+        {
             val firstNumber = Random.nextInt(0, 100)
             val secondNumber = Random.nextInt(0, 100)
             textQuestion.text = "$firstNumber + $secondNumber"
             correctAnswer = firstNumber + secondNumber
+            startTimer()
         }
+
+        fun startTimer()
+        {
+            timer = object : CountDownTimer(timeLeftInMillis, 1000)
+            {
+                override fun onTick(millisUntilFinished: Long) {
+                    timeLeftInMillis = millisUntilFinished
+                    updateText()
+                }
+
+                override fun onFinish() {
+                    pauseTimer()
+                    resetTimer()
+                    updateText()
+                    userLives--
+                    textLife.text = userLives.toString()
+                    textQuestion.text = "Oh! Time's up"
+                }
+
+            }.start()
+        }
+    fun updateText()
+    {
+        val remainingTime : Int = (timeLeftInMillis / 1000).toInt()
+        textTime.text =  String.format(Locale.getDefault(), "%2d", remainingTime)
+    }
+    fun pauseTimer()
+    {
+        timer.cancel()
+    }
+    fun resetTimer()
+    {
+        timeLeftInMillis = starTimerInMillis
+        updateText()
+    }
 }
