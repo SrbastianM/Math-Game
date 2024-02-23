@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         btnMultiplication = findViewById(R.id.btnMultiplicationQuiz)
 
         btnPlus.setOnClickListener {
-            val intent = Intent(this@MainActivity, GameActivity::class.java)
+            val intent = Intent(this@MainActivity, PlusActivity::class.java)
             startActivity(intent)
         }
     }

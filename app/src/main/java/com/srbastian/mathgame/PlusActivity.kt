@@ -1,5 +1,6 @@
 package com.srbastian.mathgame
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -10,7 +11,7 @@ import android.widget.Toast
 import java.util.Locale
 import kotlin.random.Random
 
-class GameActivity : AppCompatActivity() {
+class PlusActivity : AppCompatActivity() {
     lateinit var textLife : TextView
     lateinit var textScore : TextView
     lateinit var textTime : TextView
@@ -32,7 +33,7 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game)
+        setContentView(R.layout.activity_plus)
         textLife = findViewById(R.id.tv_lives_remaining)
         textScore = findViewById(R.id.tv_score_reached)
         textTime = findViewById(R.id.tv_time_left)
@@ -79,6 +80,18 @@ class GameActivity : AppCompatActivity() {
             resetTimer()
             gameContinue()
             editTextAnswer.setText("")
+            if (userLives == 0)
+            {
+                Toast.makeText(applicationContext, "Game Over", Toast.LENGTH_LONG).show()
+                val intent = Intent(this@PlusActivity, GameOverActivity::class.java)
+                intent.putExtra("score", userScore)
+                startActivity(intent)
+                finish()
+            }
+            else
+            {
+                gameContinue()
+            }
         }
         }
         // Take 2 random numbers and set the global variable with the sum of those

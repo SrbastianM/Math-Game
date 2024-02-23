@@ -5,6 +5,8 @@
     <string name="exit_btn">Exit</string>
     <string name="playAgain_btn">Play Again!</string>
     <string name="plus_title">Plus Quiz</string>
+    <string name="try_again">Try Again</string>
+    <string name="exit">Exit</string>
     <string name="subtraction_title">Subtraction Quiz</string>
     <string name="multiplication_title">Multiplication Quiz</string>
     <string name="timer">Time left:</string>
@@ -13,7 +15,9 @@
     <string name="score">Score:</string>
     <string name="score_reached">0</string>
     <string name="lives_remaining">3</string>
-    <string name="gameOver_Title">Game Over!</string>
+    <string name="gameOver_title">Game Over!</string>
+    <string name="win_title">Congratulations!</string>
+    <string name="user_score">Score: 0</string>
     <string name="title_activity_game">GameActivity</string>
     <string name="hint">Put your answer!</string>
 </resources>
