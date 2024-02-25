@@ -24,5 +24,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, SubtractionActivity::class.java)
             startActivity(intent)
         }
+        btnMultiplication.setOnClickListener {
+            val intent = Intent(this@MainActivity, MultiplicationActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
