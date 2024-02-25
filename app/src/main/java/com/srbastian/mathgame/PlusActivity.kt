@@ -12,26 +12,25 @@ import java.util.Locale
 import kotlin.random.Random
 
 class PlusActivity : AppCompatActivity() {
-    lateinit var textLife : TextView
-    lateinit var textScore : TextView
-    lateinit var textTime : TextView
-    lateinit var textQuestion : TextView
+    lateinit var textLife: TextView
+    lateinit var textScore: TextView
+    lateinit var textTime: TextView
+    lateinit var textQuestion: TextView
 
-    lateinit var editTextAnswer : EditText
+    lateinit var editTextAnswer: EditText
 
-    lateinit var buttonCheck : Button
-    lateinit var buttonNext : Button
+    lateinit var buttonCheck: Button
+    lateinit var buttonNext: Button
 
     var correctAnswer = 0
     var userScore = 0
     var userLives = 3
 
-    lateinit var timer : CountDownTimer
-    private val starTimerInMillis : Long = 60000
-    var timeLeftInMillis : Long = starTimerInMillis
+    lateinit var timer: CountDownTimer
+    private val starTimerInMillis: Long = 60000
+    var timeLeftInMillis: Long = starTimerInMillis
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plus)
         textLife = findViewById(R.id.tv_lives_remaining)
@@ -47,26 +46,24 @@ class PlusActivity : AppCompatActivity() {
         buttonCheck.setOnClickListener {
             val input = editTextAnswer.text.toString()
             // Check the input value aren't empty and if is it show a toast message
-            if (input == "")
-            {
-                Toast.makeText(applicationContext, "Please write an answer or clic the next button", Toast.LENGTH_LONG)
+            if (input == "") {
+                Toast.makeText(
+                    applicationContext,
+                    "Please write an answer or clic the next button",
+                    Toast.LENGTH_LONG
+                )
                     .show()
-            }
-            else
-            {
+            } else {
 
                 pauseTimer()
 
                 val userAnswer = input.toInt()
-                if (userAnswer == correctAnswer)
-                {
+                if (userAnswer == correctAnswer) {
                     userScore += 20
                     textScore.text = userScore.toString()
                     textQuestion.text = "WoW! Is correct!"
                     buttonNext.isEnabled = true
-                }
-                else
-                {
+                } else {
                     userLives--
                     textQuestion.text = "Oh!, even close try again"
                     textLife.text = userLives.toString()
@@ -80,61 +77,56 @@ class PlusActivity : AppCompatActivity() {
             resetTimer()
             gameContinue()
             editTextAnswer.setText("")
-            if (userLives == 0)
-            {
+            if (userLives == 0) {
                 Toast.makeText(applicationContext, "Game Over", Toast.LENGTH_LONG).show()
                 val intent = Intent(this@PlusActivity, GameOverActivity::class.java)
                 intent.putExtra("score", userScore)
                 startActivity(intent)
                 finish()
-            }
-            else
-            {
+            } else {
                 gameContinue()
             }
         }
-        }
-        // Take 2 random numbers and set the global variable with the sum of those
-        fun gameContinue()
-        {
-            val firstNumber = Random.nextInt(0, 100)
-            val secondNumber = Random.nextInt(0, 100)
-            textQuestion.text = "$firstNumber + $secondNumber"
-            correctAnswer = firstNumber + secondNumber
-            startTimer()
-        }
-
-        fun startTimer()
-        {
-            timer = object : CountDownTimer(timeLeftInMillis, 1000)
-            {
-                override fun onTick(millisUntilFinished: Long) {
-                    timeLeftInMillis = millisUntilFinished
-                    updateText()
-                }
-
-                override fun onFinish() {
-                    pauseTimer()
-                    resetTimer()
-                    updateText()
-                    userLives--
-                    textLife.text = userLives.toString()
-                    textQuestion.text = "Oh! Time's up"
-                }
-
-            }.start()
-        }
-    fun updateText()
-    {
-        val remainingTime : Int = (timeLeftInMillis / 1000).toInt()
-        textTime.text =  String.format(Locale.getDefault(), "%2d", remainingTime)
     }
-    fun pauseTimer()
-    {
+
+    // Take 2 random numbers and set the global variable with the sum of those
+    fun gameContinue() {
+        val firstNumber = Random.nextInt(0, 100)
+        val secondNumber = Random.nextInt(0, 100)
+        textQuestion.text = "$firstNumber + $secondNumber"
+        correctAnswer = firstNumber + secondNumber
+        startTimer()
+    }
+
+    fun startTimer() {
+        timer = object : CountDownTimer(timeLeftInMillis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                timeLeftInMillis = millisUntilFinished
+                updateText()
+            }
+
+            override fun onFinish() {
+                pauseTimer()
+                resetTimer()
+                updateText()
+                userLives--
+                textLife.text = userLives.toString()
+                textQuestion.text = "Oh! Time's up"
+            }
+
+        }.start()
+    }
+
+    fun updateText() {
+        val remainingTime: Int = (timeLeftInMillis / 1000).toInt()
+        textTime.text = String.format(Locale.getDefault(), "%2d", remainingTime)
+    }
+
+    fun pauseTimer() {
         timer.cancel()
     }
-    fun resetTimer()
-    {
+
+    fun resetTimer() {
         timeLeftInMillis = starTimerInMillis
         updateText()
     }
