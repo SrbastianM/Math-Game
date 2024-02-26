@@ -47,7 +47,11 @@ class SubtractionActivity : AppCompatActivity() {
         buttonCheckSubtraction.setOnClickListener {
             val input = editTextSubstractAnswer.text.toString()
             if (input == "") {
-                Toast.makeText(applicationContext, "Please write an answer or clic the next button", Toast.LENGTH_LONG)
+                Toast.makeText(
+                    applicationContext,
+                    "Please write an answer or clic the next button",
+                    Toast.LENGTH_LONG
+                )
                     .show()
             } else {
                 val userAnswer = input.toInt()
@@ -114,6 +118,14 @@ class SubtractionActivity : AppCompatActivity() {
                 userLives--
                 textLifeSubtraction.text = userLives.toString()
                 textQuestionSubtract.text = "Oh! Time's up"
+                if (userLives == 0) {
+                    val intent = Intent(this@SubtractionActivity, GameOverActivity::class.java)
+                    intent.putExtra("score", userScore)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    gameContinue()
+                }
             }
         }.start()
 

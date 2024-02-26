@@ -81,7 +81,6 @@ class MultiplicationActivity : AppCompatActivity() {
                 finish()
             } else {
                 gameContinue()
-                updateText()
             }
         }
 
@@ -110,7 +109,15 @@ class MultiplicationActivity : AppCompatActivity() {
                 userLives--
                 textLifeMultiplication.text = userLives.toString()
                 textQuestionMultiplication.text = "Oh! Time's up"
-
+                if (userLives == 0) {
+                    val intent = Intent(this@MultiplicationActivity, GameOverActivity::class.java)
+                    intent.putExtra("score", userScore)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    gameContinue()
+                    updateText()
+                }
             }
 
         }.start()

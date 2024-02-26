@@ -64,6 +64,7 @@ class PlusActivity : AppCompatActivity() {
                     textQuestion.text = "WoW! Is correct!"
                     buttonNext.isEnabled = true
                 } else {
+                    pauseTimer()
                     userLives--
                     textQuestion.text = "Oh!, even close try again"
                     textLife.text = userLives.toString()
@@ -112,6 +113,15 @@ class PlusActivity : AppCompatActivity() {
                 userLives--
                 textLife.text = userLives.toString()
                 textQuestion.text = "Oh! Time's up"
+                if (userLives == 0) {
+                    Toast.makeText(applicationContext, "Game Over", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this@PlusActivity, GameOverActivity::class.java)
+                    intent.putExtra("score", userScore)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    gameContinue()
+                }
             }
 
         }.start()
